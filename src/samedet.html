@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Error 404!</title>
+    <link rel="icon" href="./img/lg-modified.png" type="image">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: montserrat, sans-serif;
+            background-image: linear-gradient(to bottom right, #CC2E5D, #FF5858);
+        }
+        
+        .page-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            color: white;
+            font-size: 320px;
+            font-weight: 900;
+            animation: fadein 0.8s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+        
+        @keyframes fadein {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0.2;
+            }
+        }
+        
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        h2 {
+            color: white;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            animation: slidedown 0.5s ease-out 0.5s forwards;
+            transform: translateY(-100px);
+            opacity: 0;
+        }
+        
+        @keyframes slidedown {
+            0% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 20px 40px;
+            background-color: white;
+            color: #222;
+            font-weight: 700;
+            font-style: italic;
+            text-decoration: none;
+            border-radius: 999px;
+            font-size: 28px;
+            transition: 0.4s ease-out;
+            animation: slideup 0.5s ease-out 0.5s forwards;
+            transform: translateY(-100px);
+            opacity: 0;
+        }
+        
+        @keyframes slideup {
+            0% {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .button:hover {
+            color: #FF5858;
+            box-shadow: 6px 6px rgba(0, 0, 0, 0.3);
+        } 
+        
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 180px;
+            }
+        
+            h2 {
+                font-size: 32px;
+                margin-bottom: 50px;
+                margin-left: 40px;
+            }
+        
+            .button {
+                padding: 15px 30px;
+                font-size: 24px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="page-wrap">
+        <h1>404</h1>
+        <div class="content">
+            <h2>Looks like the NID or Phone Number you entered have been used before!</h2>
+            <a href="signup.html" class="button">TRY AGAIN</a>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            var disclaimer = document.querySelector("img[alt='www.000webhost.com']");
+            if(disclaimer) {
+                disclaimer.remove();
+            }
+        });
+        
+        document.addEventListener('touchmove', function (event) {
+            event.preventDefault();
+        }, { passive: false });
+    </script>
+</body>
+</html>

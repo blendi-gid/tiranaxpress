@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Card | TiranaXPress</title>
+    <link rel="icon" href="../img/lg-modified.png" type="image">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    body {
+        background: linear-gradient(to right, rgba(23,23,23,1) 52%,rgba(23,23,23,1) 53%,rgba(0,128,1,1) 100%);
+        font-family: 'Roboto', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .card {
+        border: 5px solid #000000!important;
+        max-width: 450px;
+        border-radius: 15px;
+        padding: 35px;
+        padding-bottom: 20px!important;
+    }
+
+    .heading {
+        color: #C1C1C1;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    img {
+        transform: translateX(50px) translateY(33px);
+    }
+
+    img:hover {
+        cursor: pointer;
+    }
+
+    .text-warning {
+        font-size: 12px;
+        font-weight: 500;
+        color: #edb537!important;
+    }
+
+    #cno {
+        transform: translateY(-10px);
+    }
+
+    input {
+        border: none;
+        border-bottom: 1.5px solid #E8E5D2!important;
+        font-weight: bold;
+        border-radius: 0;
+        order: 0;
+    }
+
+    .form-group input:focus {
+        border: 0;
+        outline: 0;
+    }
+
+    .col-sm-5 {
+        padding-left: 90px;
+    }
+
+    .btn {
+        transform: translateX(15px) translateY(-83px);
+        background: #F3A002!important;
+        border: none;
+        border-radius: 30px;
+    }
+
+    .btn:focus {
+        box-shadow: none;
+    }
+
+    @media (max-width: 576px) {
+        body {
+            overflow: hidden;
+        }
+        
+        .card {
+            margin: 20px;
+            padding: 20px;
+        }
+
+        img {
+            transform: translateX(0) translateY(-65px);
+        }
+
+        .col-sm-5 {
+            padding-left: 0;
+        }
+        
+        .col-sm-3 {
+            margin-top: 20px;
+        }
+
+        .btn {
+            transform: translateX(0) translateY(0);
+            margin-top: 10px;
+            position: static;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center">
+            <div class="col-sm-12">
+                <div class="card mx-auto">
+                    <p class="heading">PAYMENT DETAILS</p>
+                        <form class="card-details ">
+                            <div class="form-group mb-0">
+                                    <p class="text-warning mb-0">Card Number</p> 
+                                      <input type="text" name="card-num" placeholder="1234 5678 9012 3457" size="19" id="cno" minlength="19" maxlength="19" oninput="formatCardNumber(this)">
+                                    <img src="./assets/images/insert-card.png" width="84px" height="50px"/>
+                            </div>
+                            <div class="form-group">
+                                <p class="text-warning mb-0">Cardholder's Name</p> <input type="text" name="name" placeholder="Name" size="19">
+                            </div>
+                            <div class="form-group pt-2">
+                                <div class="row d-flex">
+                                    <div class="col-sm-4">
+                                        <p class="text-warning mb-0">EXPIRATION</p>
+                                        <input type="text" name="exp" placeholder="MM/YY" size="5" id="exp" minlength="5" maxlength="5" oninput="formatExpiration(this)" >
+                                        <span id="exp-error" style="color: red;"></span>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <p class="text-warning mb-0">CVV</p>
+                                        <input type="password" name="cvv" placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" oninput="formatCardCvv(this)">
+                                    </div>
+                                    <div class="col-sm-5 pt-0">
+                                        <a href="./paym.html"><button type="button" class="btn btn-primary" id="payment-button" disabled><i class="fas fa-arrow-right px-3 py-2"></i></button></a>
+                                    </div>
+                                </div>
+                            </div>		
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function formatCardNumber(input) {
+            let cardNumber = input.value.replace(/\D/g, '');
+            cardNumber = cardNumber.replace(/(\d{4})(?=\d)/g, '$1 ');
+            input.value = cardNumber;
+        }
+
+        function formatCardCvv(input){
+            let cvv = input.value.replace(/\D/g, '');
+            input.value = cvv;
+        }
+
+        function formatExpiration(input) {
+            let expiration = input.value;
+
+            expiration = expiration.replace(/\D/g, '');
+
+            if (expiration.length > 2) {
+                expiration = expiration.substring(0, 2) + '/' + expiration.substring(2);
+            }
+
+            input.value = expiration;
+            validateExpiration(input);
+        }
+
+        function validateExpiration(input) {
+            const expiration = input.value;
+            const month = expiration.substring(0, 2);
+            const year = expiration.substring(3, 5);
+            const currentYear = new Date().getFullYear() % 100;
+            let formattedExpiration = expiration.replace(/\D/g, '');
+
+            if (formattedExpiration.length > 2) {
+                formattedExpiration = formattedExpiration.substring(0, 2) + '/' + formattedExpiration.substring(2);
+            }
+
+            input.value = formattedExpiration;
+            const paymentButton = document.getElementById('payment-button');
+            const expirationError = document.getElementById('exp-error');
+
+            if (month > 12 || year < 24 || year > 30) {
+                paymentButton.disabled = true;
+            } else {
+                paymentButton.disabled = false;
+            }
+        }
+    </script>
+    <script>
+            document.addEventListener('DOMContentLoaded', () => {
+            var disclaimer = document.querySelector("img[alt='www.000webhost.com']");
+            if(disclaimer) {
+                disclaimer.remove();
+            }
+        });
+    </script>
+</body>
+</html>

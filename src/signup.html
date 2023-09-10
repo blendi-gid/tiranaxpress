@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SignUp | TiranaXPress</title>
+    <link rel="stylesheet" type="text/css" href="style.css"> <link rel="icon" href="./img/lg-modified.png" type="image">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    @media only screen and (max-width: 600px) {
+        body {
+            width: 100%;
+            font-size: 14px;
+            background: #171717;
+            overflow-x: hidden;
+        }
+        
+        .form {  
+            display: flex;
+            position: relative;
+        }
+        
+        .form:hover {
+            transform: scale(1);
+            border: none;
+        }
+        
+        .form-container {
+            width: 100%;
+            height: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #171717;
+        }
+    
+        .input-field {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+       
+        .card {
+            width: 80%;
+            height: 170px;
+            max-width: 400px;
+            background: #171717;
+            margin-bottom: 80px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="form-container">
+    <form class="form" action="connect.php" method="POST" onsubmit="return validateForm()">
+        <p id="heading">SIGN UP</p>
+        <div class="field">
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z"></path>            </svg>
+            <input autocomplete="off" placeholder="NID" class="input-field" type="text" maxlength="10" id = "nid" name="nid" pattern="[A-Za-z][0-9]{8}[A-Za-z]" required>
+        </div>
+        <div class="field">
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path></svg>
+            <div class="ui-wrapper">
+                <div class="input-wrapper">
+                    <legend>
+                        <label for="phonenumber">PHONE NUMBER</label>
+                    </legend>
+                    <div class="textfield">
+                        <input autocomplete="off" pattern="6[0-9]{8}" maxlength="9" id="phone_number" type="tel" name="phone_number" required>
+                        <span class="invalid-msg">This is not a valid phone number</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/> <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>            </svg>
+            <input autocomplete="off" placeholder="Father's Name" class="input-field" type="text" maxlength="16" id ="father_name" name="father_name" required>
+        </div>
+        <div class="field">
+            <svg fill="#FFFFFF" width="30" height="25" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                <g id="OTP">
+                <path d="M458.4741,112H265V62.41A31.3815,31.3815,0,0,0,233.5879,31H62.4077A31.3806,31.3806,0,0,0,31,62.41V449.59A31.4379,31.4379,0,0,0,62.4077,481h171.18A31.4388,31.4388,0,0,0,265,449.59V292H458.4771A22.5231,22.5231,0,0,0,481,269.4771V134.5259A22.5257,22.5257,0,0,0,458.4741,112ZM125.5,50.08h45a11.25,11.25,0,0,1,0,22.5h-45a11.25,11.25,0,0,1,0-22.5Zm44.9956,411.7651h-45a11.25,11.25,0,1,1,0-22.5h45a11.25,11.25,0,0,1,0,22.5ZM245.1982,420.25H50.7974V91.75H245.1982V112H125.3149A22.3149,22.3149,0,0,0,103,134.3149V269.6641A22.3357,22.3357,0,0,0,125.3359,292H166v36.1489a11.1221,11.1221,0,0,0,18.9868,7.8643L229,292h16.1982Zm-24.39-210.06a11.3086,11.3086,0,0,1,4.14,15.39,11.198,11.198,0,0,1-15.39,4.14L195.25,221.44V238a11.25,11.25,0,0,1-22.5,0V221.44L158.437,229.72a11.198,11.198,0,0,1-15.39-4.14,11.3164,11.3164,0,0,1,4.14-15.39L161.5,202l-14.313-8.28a11.2689,11.2689,0,0,1,11.25-19.5293L172.75,182.47V166a11.25,11.25,0,0,1,22.5,0v16.47l14.3086-8.2793a11.2689,11.2689,0,0,1,11.25,19.5293L206.5,202Zm108,0a11.3086,11.3086,0,0,1,4.14,15.39,11.198,11.198,0,0,1-15.39,4.14L303.25,221.44V238a11.25,11.25,0,0,1-22.5,0V221.44L266.437,229.72a11.198,11.198,0,0,1-15.39-4.14,11.3164,11.3164,0,0,1,4.14-15.39L269.5,202l-14.313-8.28a11.2689,11.2689,0,0,1,11.25-19.5293L280.75,182.47V166a11.25,11.25,0,0,1,22.5,0v16.47l14.3086-8.2793a11.2689,11.2689,0,0,1,11.25,19.5293L314.5,202Zm108,0a11.3086,11.3086,0,0,1,4.14,15.39,11.198,11.198,0,0,1-15.39,4.14L411.25,221.44V238a11.25,11.25,0,0,1-22.5,0V221.44L374.437,229.72a11.198,11.198,0,0,1-15.39-4.14,11.3164,11.3164,0,0,1,4.14-15.39L377.5,202l-14.313-8.28a11.2689,11.2689,0,0,1,11.25-19.5293L388.75,182.47V166a11.25,11.25,0,0,1,22.5,0v16.47l14.3086-8.2793a11.2689,11.2689,0,0,1,11.25,19.5293L422.5,202Z"/>
+                </g>
+                </svg>
+            <input autocomplete="new-password" placeholder="OTP" class="input-field" type="password" maxlength="6" id="otp" name="otp" required>
+        </div>
+        <br></br>
+        <button class="verifyButton" type="submit" id="verify">Verify</button>
+        <div class="alertMessage"></div> 
+        <a href ="./login.html" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Log in if you have an account&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+    </form>
+    
+    <div class="card">
+        <div class="content">
+            <div class="back">
+                <div class="back-content">
+                    <svg stroke="#ffffff" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" height="50px" width="50px" fill="#ffffff">
+                        <path d="M20.84375 0.03125C20.191406 0.0703125 19.652344 0.425781 19.21875 1.53125C18.988281 2.117188 18.5 3.558594 18.03125 4.9375C17.792969 5.636719 17.570313 6.273438 17.40625 6.75C17.390625 6.796875 17.414063 6.855469 17.40625 6.90625C17.398438 6.925781 17.351563 6.949219 17.34375 6.96875L17.25 7.25C18.566406 7.65625 19.539063 8.058594 19.625 8.09375C22.597656 9.21875 28.351563 11.847656 33.28125 16.78125C38.5 22 41.183594 28.265625 42.09375 30.71875C42.113281 30.761719 42.375 31.535156 42.75 32.84375C42.757813 32.839844 42.777344 32.847656 42.78125 32.84375C43.34375 32.664063 44.953125 32.09375 46.3125 31.625C47.109375 31.351563 47.808594 31.117188 48.15625 31C49.003906 30.714844 49.542969 30.292969 49.8125 29.6875C50.074219 29.109375 50.066406 28.429688 49.75 27.6875C49.605469 27.347656 49.441406 26.917969 49.25 26.4375C47.878906 23.007813 45.007813 15.882813 39.59375 10.46875C33.613281 4.484375 25.792969 1.210938 22.125 0.21875C21.648438 0.0898438 21.234375 0.0078125 20.84375 0.03125 Z M 16.46875 9.09375L0.0625 48.625C-0.09375 48.996094 -0.00390625 49.433594 0.28125 49.71875C0.472656 49.910156 0.738281 50 1 50C1.128906 50 1.253906 49.988281 1.375 49.9375L40.90625 33.59375C40.523438 32.242188 40.222656 31.449219 40.21875 31.4375C39.351563 29.089844 36.816406 23.128906 31.875 18.1875C27.035156 13.34375 21.167969 10.804688 18.875 9.9375C18.84375 9.925781 17.8125 9.5 16.46875 9.09375 Z M 17 16C19.761719 16 22 18.238281 22 21C22 23.761719 19.761719 26 17 26C15.140625 26 13.550781 24.972656 12.6875 23.46875L15.6875 16.1875C16.101563 16.074219 16.550781 16 17 16 Z M 31 22C32.65625 22 34 23.34375 34 25C34 25.917969 33.585938 26.730469 32.9375 27.28125L32.90625 27.28125C33.570313 27.996094 34 28.949219 34 30C34 32.210938 32.210938 34 30 34C27.789063 34 26 32.210938 26 30C26 28.359375 26.996094 26.960938 28.40625 26.34375L28.3125 26.3125C28.117188 25.917969 28 25.472656 28 25C28 23.34375 29.34375 22 31 22 Z M 21 32C23.210938 32 25 33.789063 25 36C25 36.855469 24.710938 37.660156 24.25 38.3125L20.3125 39.9375C18.429688 39.609375 17 37.976563 17 36C17 33.789063 18.789063 32 21 32 Z M 9 34C10.65625 34 12 35.34375 12 37C12 38.65625 10.65625 40 9 40C7.902344 40 6.960938 39.414063 6.4375 38.53125L8.25 34.09375C8.488281 34.03125 8.742188 34 9 34Z"></path>                    </svg>
+                    <strong>Kliko SIPER!</strong>
+                </div>
+            </div>
+            <div class="front">
+                <div class="img">
+                    <div class="circle">
+                    </div>
+                    <div class="circle" id="right">
+                    </div>
+                    <div class="circle" id="bottom">
+                    </div>
+                </div>
+                <div class="front-content">
+                    <small class="badge">GENERATED OTP</small>
+                    <p class="title" id="otpText"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<script>
+    function generateOTP() {
+        return Math.floor(100000 + Math.random() * 900000);
+    }
+
+    let generatedOTP = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+            const otpText = document.getElementById("otpText");
+            const otpCard = document.querySelector(".card");
+            const otpVerify = document.querySelector(".verifyButton");
+            const enteredOTP = document.getElementById("otp");
+            const alertMessageDiv = document.querySelector(".alertMessage");
+
+            otpCard.addEventListener("mouseover", () => {
+                if (generatedOTP === null) {
+                    generatedOTP = generateOTP();
+                    otpText.textContent = generatedOTP;
+                }
+            });
+
+            otpVerify.addEventListener("click", (event) => {
+                if (generatedOTP == enteredOTP.value) {
+                    alertMessageDiv.textContent = "";
+                } else {
+                    alertMessageDiv.textContent = "Invalid OTP. Please try again.";
+                    event.preventDefault();
+                }
+            });
+    });
+</script>
+
+<script>
+    function validateForm() {
+        const nidInput = document.querySelector('input[placeholder="NID"]');
+        const phoneNumberInput = document.getElementById('phone_number');
+        
+        const nidPattern = /^[A-Za-z][0-9]{8}[A-Za-z]$/;
+        const phoneNumberPattern = /^6[0-9]{8}$/;
+        
+        if (!nidPattern.test(nidInput.value)) {
+            alert('NID is not valid. It should start and end with a letter and have 8 digits in between.');
+            nidInput.focus();
+            return false;
+        }
+    
+        if (!phoneNumberPattern.test(phoneNumberInput.value)) {
+            alert('Phone number is not valid. It should start with 6 and have 9 digits.');
+            phoneNumberInput.focus();
+            return false;
+        }
+    
+        return true;
+    }
+</script>
+
+<script>
+        document.addEventListener('touchmove', function (event) {
+            event.preventDefault();
+        }, { passive: false });
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            var disclaimer = document.querySelector("img[alt='www.000webhost.com']");
+            if(disclaimer) {
+                disclaimer.remove();
+            }
+        });
+</script>
+</body>
+</html>

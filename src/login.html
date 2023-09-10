@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LogIn | TiranaXPress</title>
+    <link rel="stylesheet" type="text/css" href="style.css"> <link rel="icon" href="./img/lg-modified.png" type="image">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @media only screen and (max-width: 600px) {
+            body{
+                background: #171717;    
+            }
+            
+            .form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 4em;
+                justify-content: flex-start;
+                height: 100vh;
+                background-color: #171717;
+                overflow: auto;
+            }
+            
+            .form:hover {
+                transform: scale(1);
+                border: none;
+            }
+        
+            .field {
+                width: 100%;
+                margin: 3px;
+            }   
+        
+            .input-field {
+                width: 80%;
+                padding: 10px;
+                font-size: 16px;
+            }
+           
+            .btn {
+                width: 100%;
+                padding: 10px;
+                font-size: 16px;
+            }
+        }
+        
+        .remember-field input[type="checkbox"] {
+            display: inline-block;
+            margin-right: 5px;
+            margin-top: 5px;
+            vertical-align: middle;
+            background-color: #171717;
+            border: 1px solid #d3d3d3; 
+            outline: none;
+        }
+
+        .remember-field label {
+            vertical-align: middle;
+            color: #d3d3d3; 
+            font-size: 16px;
+            font-weight: 400;
+            opacity: 0.4;
+            font-family: 'Roboto', 'Segoe UI', sans-serif;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+  <form class="form" id="send-code" action="login_process.php" method="POST" onsubmit="return validateForm()">
+    <p id="heading">LOG IN</p>
+    <div class="field">
+        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z"></path>            </svg>
+        <input autocomplete="off" placeholder="NID" class="input-field" type="text" maxlength="10" pattern="[A-Za-z][0-9]{8}[A-Za-z]" id="nid" name="nid" required>
+    </div>
+    <div class="field">
+        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path></svg>
+        <div class="ui-wrapper">
+            <div class="input-wrapper">
+                <legend>
+                    <label for="phonenumber">PHONE NUMBER</label>
+                </legend>
+                <div class="textfield">
+                    <input autocomplete="off" pattern="6[0-9]{8}" maxlength="9" id="phone_number" type="tel" name="phone_number" required>
+                    <span class="invalid-msg">This is not a valid phone number</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/> <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>            </svg>
+        <input autocomplete="off" placeholder="Father's Name" class="input-field" type="text" maxlength="16" name="father_name" required>
+    </div>
+    <div class="field">
+        <svg fill="#FFFFFF" width="30" height="25" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <g id="OTP">
+            <path d="M458.4741,112H265V62.41A31.3815,31.3815,0,0,0,233.5879,31H62.4077A31.3806,31.3806,0,0,0,31,62.41V449.59A31.4379,31.4379,0,0,0,62.4077,481h171.18A31.4388,31.4388,0,0,0,265,449.59V292H458.4771A22.5231,22.5231,0,0,0,481,269.4771V134.5259A22.5257,22.5257,0,0,0,458.4741,112ZM125.5,50.08h45a11.25,11.25,0,0,1,0,22.5h-45a11.25,11.25,0,0,1,0-22.5Zm44.9956,411.7651h-45a11.25,11.25,0,1,1,0-22.5h45a11.25,11.25,0,0,1,0,22.5ZM245.1982,420.25H50.7974V91.75H245.1982V112H125.3149A22.3149,22.3149,0,0,0,103,134.3149V269.6641A22.3357,22.3357,0,0,0,125.3359,292H166v36.1489a11.1221,11.1221,0,0,0,18.9868,7.8643L229,292h16.1982Zm-24.39-210.06a11.3086,11.3086,0,0,1,4.14,15.39,11.198,11.198,0,0,1-15.39,4.14L195.25,221.44V238a11.25,11.25,0,0,1-22.5,0V221.44L158.437,229.72a11.198,11.198,0,0,1-15.39-4.14,11.3164,11.3164,0,0,1,4.14-15.39L161.5,202l-14.313-8.28a11.2689,11.2689,0,0,1,11.25-19.5293L172.75,182.47V166a11.25,11.25,0,0,1,22.5,0v16.47l14.3086-8.2793a11.2689,11.2689,0,0,1,11.25,19.5293L206.5,202Zm108,0a11.3086,11.3086,0,0,1,4.14,15.39,11.198,11.198,0,0,1-15.39,4.14L303.25,221.44V238a11.25,11.25,0,0,1-22.5,0V221.44L266.437,229.72a11.198,11.198,0,0,1-15.39-4.14,11.3164,11.3164,0,0,1,4.14-15.39L269.5,202l-14.313-8.28a11.2689,11.2689,0,0,1,11.25-19.5293L280.75,182.47V166a11.25,11.25,0,0,1,22.5,0v16.47l14.3086-8.2793a11.2689,11.2689,0,0,1,11.25,19.5293L314.5,202Zm108,0a11.3086,11.3086,0,0,1,4.14,15.39,11.198,11.198,0,0,1-15.39,4.14L411.25,221.44V238a11.25,11.25,0,0,1-22.5,0V221.44L374.437,229.72a11.198,11.198,0,0,1-15.39-4.14,11.3164,11.3164,0,0,1,4.14-15.39L377.5,202l-14.313-8.28a11.2689,11.2689,0,0,1,11.25-19.5293L388.75,182.47V166a11.25,11.25,0,0,1,22.5,0v16.47l14.3086-8.2793a11.2689,11.2689,0,0,1,11.25,19.5293L422.5,202Z"/>
+            </g>
+            </svg>
+        <input autocomplete="new-password" placeholder="OTP" class="input-field" type="password" maxlength="6" name="otp" required>
+    </div>
+    <div class="remember-field">
+        <input type="checkbox" id="remember" name="remember">
+        <label for="remember">Remember Me</label>
+    </div>    
+    <button type="submit" class="btn" id="log-in">LOG IN</button>
+    <a href ="./signup.html" class="btn" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No Account? | SIGN UP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+    <a href ="./home/home.html" class="btn" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Continue as a Guest&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+
+</form> 
+
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            var disclaimer = document.querySelector("img[alt='www.000webhost.com']");
+            if(disclaimer) {
+                disclaimer.remove();
+            }
+        });
+        
+        document.addEventListener('touchmove', function (event) {
+            event.preventDefault();
+        }, { passive: false });
+        
+        const form = document.querySelector('.form');
+
+        form.addEventListener('hover', (event) => {
+            event.preventDefault();
+        });
+</script>
+</body>
+</html>

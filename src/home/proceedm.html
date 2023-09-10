@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Procced | TiranaXPress</title>
+    <link rel="stylesheet" type="text/css" href="../style.css"> <link rel="icon" href="../img/lg-modified.png" type="image">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+          body{
+              background-color:#D3D3D3;
+              font-family: "Poppins", sans-serif;
+              font-weight: 300;
+         }
+         
+         .ppcontainer{
+              height: 100vh;
+         }
+  
+         .ppcard{
+              border: none;
+         }
+  
+         .ppcard-header {
+              padding: .5rem 1rem;
+              margin-bottom: 0;
+              background-color: rgba(0,0,0,.03);
+              border-bottom: none;
+          }
+  
+          .ppbtn-light:focus {
+              color: #212529;
+              background-color: #e2e6ea;
+              border-color: #dae0e5;
+              box-shadow: 0 0 0 0.2rem rgba(216,217,219,.5);
+          }
+  
+          .ppform-control{
+              height: 50px;
+              border: 2px solid #eee;
+              border-radius: 6px;
+              font-size: 14px;
+              margin: auto;
+          }
+  
+          .ppform-control:focus {
+              color: #495057;
+              background-color: #353535;
+              border-color: #232323;
+              outline: 0;
+              box-shadow: none;
+              -webkit-text-fill-color: white;
+              margin-left: 5px;
+          }
+  
+          .ppinput{
+              position: relative;
+          }
+  
+          .ppinput i{
+              position: absolute;
+              top: 16px;
+              left: 11px;
+              color: #ff0000;
+              margin: auto;
+          }
+  
+          .ppinput input{
+              text-indent: 25px;
+              margin-left: 5px;
+          }
+  
+          .ppcard-text{
+              font-size: 13px;
+              margin-left: 6px;
+          }
+  
+          .ppcertificate-text{
+              font-size: 12px;
+          }
+   
+          .ppbilling{
+              font-size: 11px;
+          }  
+  
+          .ppsuper-price{
+              top: 0px;
+              font-size: 22px;
+          }
+  
+          .ppsuper-month{
+              font-size: 11px;
+          }
+  
+          .ppline{
+              color: #232323;
+          }
+  
+          .ppfree-button{
+              background: #353535;
+              height: 52px;
+              font-size: 15px;
+              border-radius: 8px;
+          }
+  
+          .pppayment-card-body{
+              flex: 1 1 auto;
+              padding: 24px 1rem !important;
+          }
+  </style>
+</head>
+<body>
+    <div class="container d-flex justify-content-center mt-5 mb-5">
+        <div class="row g-3">
+          <div class="col-md-6">  
+            <span>Payment Method</span>
+            <div class="ppcard">
+              <div class="accordion" id="accordionExample">
+                <div class="ppcard">
+                  <div class="card-header p-0" id="headingTwo">
+                    <h2 class="mb-0">
+                      <button class="btn btn-light btn-block text-left collapsed p-3 rounded-0 border-bottom-custom" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <div class="d-flex align-items-center justify-content-between">
+                          <span>PAYPAL</span>
+                          <img src="https://i.imgur.com/7kQEsHU.png" width="30">
+                        </div>
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                      <input type="text" class="ppform-control" placeholder="    Paypal Email">
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="ppcard">
+                  <div class="ppcard-header p-0">
+                    <h2 class="mb-0">
+                      <button class="btn btn-light btn-block text-left p-3 rounded-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <div class="d-flex align-items-center justify-content-between">
+                          <span>CREDIT CARD</span>
+                          <div class="icons">
+                            <img src="https://i.imgur.com/2ISgYja.png" width="30">
+                            <img src="https://i.imgur.com/W1vtnOV.png" width="30">
+                            <img src="https://i.imgur.com/35tC99g.png" width="30">
+                            <img src="https://i.imgur.com/2ISgYja.png" width="30">
+                          </div>
+                        </div>
+                      </button>
+                    </h2>
+                  </div>
+    
+                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="ppcard-body pppayment-card-body">
+                      <span class="font-weight-normal card-text">CARD NUMBER</span>
+                      <div class="ppinput">  
+                        <i class="fa fa-credit-card"></i>
+                        <input type="text" class="form-control" placeholder="1234 5678 9012 3456">                       
+                      </div>    
+                      <div class="row mt-3 mb-3">   
+                        <div class="col-md-6">
+                          <span class="font-weight-normal card-text">EXPIRY DATE</span>
+                          <div class="ppinput">   
+                            <i class="fa fa-calendar"></i>
+                            <input type="text" class="ppform-control" placeholder="MM/YY">                          
+                          </div>            
+                        </div>
+                        <div class="col-md-6">
+                          <span class="font-weight-normal card-text">CVC/CVV</span>
+                          <div class="ppinput">  
+                            <i class="fa fa-lock"></i>
+                            <input type="text" class="ppform-control" placeholder="000">      
+                          </div> 
+                        </div>
+                      </div>
+                      <span class="text-muted certificate-text"><i class="fa fa-lock"></i> Your transaction is secured with ssl certificate!</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col-md-6">
+              <span>Summary</span>
+              <div class="ppcard">
+                <div class="d-flex justify-content-between p-3">
+                  <div class="d-flex flex-column">
+                    <span>Abone(Billed monthly) <i class="fa fa-caret-down"></i></span>
+                    <a href="proceedw.html" class="ppbilling">Provo abonen javore!</a>        
+                  </div>
+                  <div class="mt-1">
+                    <sup class="ppsuper-price">$15.99</sup>
+                    <span class="ppsuper-month">/month</span>
+                  </div>    
+                </div>
+                <hr class="mt-0 line">
+                <div class="p-3">
+                  <div class="d-flex justify-content-between mb-2">
+                    <span>NO TAX!</span>
+                    <span>-$0.00</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Tax <i class="fa fa-clock-o"></i></span>
+                    <span>-0%</span>
+                  </div>
+                </div>
+                <hr class="mt-0 line">
+                <div class="p-3 d-flex justify-content-between">
+                  <div class="d-flex flex-column">
+                    <span>To be paid (US Dollars)</span>
+                    <small>After 30 days another $15.99 | Cancel anytime</small>                  
+                  </div>
+                  <span>$15.99</span>
+                </div>
+                <div class="p-3">
+                <button class="ppbtn btn-primary btn-block ppfree-button">COMPLETE PURCHASE</button> 
+                <br>
+                <a href="home.html" style="text-decoration: none;"><button class="ppbtn btn-primary btn-block ppfree-button" style="color: white; text-decoration: none; font-size: 15px; text-transform: uppercase;">Back to home page?</button></a>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            var disclaimer = document.querySelector("img[alt='www.000webhost.com']");
+            if(disclaimer) {
+                disclaimer.remove();
+            }
+        });
+</script>
+</body>
+</html>

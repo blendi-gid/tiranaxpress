@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="+nxGUDJ4QpAZ5l9Bsjdi102tLVC21AIh5d1Nl23908vVuFHs34=">
+    <title>Loading...</title>
+    <meta name="description" content="Welcome to TiranaXPress, Traveling through Tirana is being made better each and every day by us!"/>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./img/lg-modified.png" type="image">
+    <script>
+        function isMobileDevice() {
+            return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+        }
+    
+        function isFirstVisit() {
+            return !localStorage.getItem('visitedBefore');
+        }
+    
+        function redirectToCorrectPage() {
+            if (isMobileDevice()) {
+                window.location.href = './src/home/home.html';
+            } else {
+                if (isFirstVisit()) {
+                    localStorage.setItem('visitedBefore', 'true');
+                    window.location.href = './src/login.html';
+                } else {
+                    window.location.href = './src/home/home.html';
+                }
+            }
+        }
+
+        window.onload = function() {
+            setTimeout(function() {
+                document.body.style.opacity = "1";
+            }, 1000);
+            setTimeout(redirectToCorrectPage, 4000);
+        };
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            var disclaimer = document.querySelector("img[alt='www.000webhost.com']");
+            if(disclaimer) {
+                disclaimer.remove();
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="container">
+        <label class="loading-title">Loading ... TiranaXPress</label>
+        <span class="loading-circle sp1">
+            <span class="loading-circle sp2">
+                <span class="loading-circle sp3"></span>
+            </span>
+        </span>
+    </div>
+</body>
+</html>
